@@ -1,0 +1,19 @@
+[package]
+edition = "2021"
+name = "bevy_polyline_demo"
+version = "0.1.1"
+
+[profile.release]
+opt-level = "z" # optimize for small code size aggressively.
+lto = true # link-time optimization
+panic = "abort" # abort immediately rather than unwind
+codegen-units = 1 # improves optimization, but decrease compile time
+# strip = "symbols" # strip symbols
+
+[profile.release.package."*"]
+opt-level = "z"
+
+[dependencies]
+bevy_polyline = { path = "../" }
+bevy = { git = "https://github.com/bevyengine/bevy", branch = "main" }
+
